@@ -5,5 +5,7 @@ public class Test {
         Player p1 = new Player();
         p1.setStrategy(new ShootAttack());
         p1.attack();
+        p1.setStrategy(new PunchAttack());
+        p1.attack();
     }
 }
