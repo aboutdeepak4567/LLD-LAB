@@ -1,0 +1,33 @@
+🔔 What is Observer Design Pattern?
+
+Observer Pattern defines a one-to-many dependency where
+when one object (Subject) changes state, all its dependents (Observers) are automatically notified.
+
+📌 It’s a behavioral design pattern.
+
+⸻
+
+🧠 Real-world analogy
+	•	YouTube channel (Subject)
+	•	Subscribers (Observers)
+
+When a video is uploaded → all subscribers get notified automatically.
+
+⸻
+
+🧩 Key Components
+
+1️⃣ Subject
+	•	Maintains list of observers
+	•	Provides methods to attach / detach observers
+
+2️⃣ Observer
+	•	Interface with update() method
+
+3️⃣ ConcreteSubject
+	•	Implements Subject
+	•	Notifies observers on state change
+
+4️⃣ ConcreteObserver
+	•	Implements Observer
+	•	Reacts to updates

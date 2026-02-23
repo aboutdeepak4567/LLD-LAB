@@ -1,4 +1,4 @@
-package DesignPattern.Strategy.example1;
+package DesignPattern.structural.Strategy.example1;
 
 public class Test {
     public static void main(String[] args) {
