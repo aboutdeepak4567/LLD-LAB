@@ -1,14 +1,25 @@
 package oops.lambda;
 
-public class Test {
+//public class Test {
+//    public static void main(String[] args) {
+//        MyLambda ld = (x,y) -> {
+//                System.out.println(x+y);
+//
+//            };
+//
+//        ld.add(4,5);
+//
+//    }
+//
+//}
+public class Test{
     public static void main(String[] args) {
-        MyLambda ld = (x,y) -> {
-                System.out.println(x+y);
-
+        MyLambda lambda = () -> {
+                System.out.println("Hey, How're you?");
             };
-
-        ld.add(4,5);
+        lambda.display();
 
     }
+
 
 }
