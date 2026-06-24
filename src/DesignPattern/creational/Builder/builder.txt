@@ -1,0 +1,132 @@
+Builder Pattern is a creational design pattern used to construct complex objects step-by-step, especially when:
+	•	an object has many fields
+	•	most fields are optional
+	•	you want to avoid constructor overload hell
+	•	you want object creation to be readable and safe
+
+
+	👉 Key idea:
+
+    Separate object construction from its representation.
+    --------------------------
+
+❌ The problem it solves (why Builder exists)
+    Imagine this constructor 👇
+
+    User(String name, int age, String email, String phone,
+         String address, boolean isActive, boolean isVerified)
+
+Issues:
+     •	😵 Hard to remember parameter order
+     •	❌ Optional fields become painful
+     •	❌ Readability is terrible
+     •	❌ Easy to introduce bugs
+This is called the Telescoping Constructor Problem.
+
+✅ Builder Pattern to the rescue
+      Instead of passing everything at once, you build the object gradually.
+
+      ✨ How it looks in Java:
+      ---------------------------
+     User user = User.builder()
+              .name("Deepak")
+              .age(25)
+              .email("boss@gmail.com")
+              .isActive(true)
+              .build();
+     --------------------------------
+✔ Super readable
+✔ Only set what you need
+✔ Order doesn’t matter
+✔ Immutable objects possible
+
+🧠 Structure (important for interviews)
+--------------------------------------------------------------------------------------
+          class User {
+              private final String name;
+              private final int age;
+              private final String email;
+
+              private User(Builder builder) {
+                  this.name = builder.name;
+                  this.age = builder.age;
+                  this.email = builder.email;
+              }
+
+              static class Builder {
+                  private String name;
+                  private int age;
+                  private String email;
+
+                  Builder name(String name) {
+                      this.name = name;
+                      return this;
+                  }
+
+                  Builder age(int age) {
+                      this.age = age;
+                      return this;
+                  }
+
+                  Builder email(String email) {
+                      this.email = email;
+                      return this;
+                  }
+
+                  User build() {
+                      return new User(this);
+                  }
+              }
+          }
+--------------------------------------------------------------------------------------
+🕒 When should you use Builder?
+
+Use Builder when you see these signs 👇
+
+✅ Use Builder if:
+	•	Object has many parameters (4+)
+	•	Parameters are optional
+	•	You want readable object creation
+	•	You want immutability
+	•	Construction is complex or multi-step
+
+❌ Don’t use Builder if:
+	•	Object has 1–2 simple fields
+	•	Creation is trivial
+	•	Performance is extremely critical (builders create extra objects)
+
+⸻
+
+🧠 How to REMEMBER Builder Pattern (very important 🔥)
+
+🏗️ Mental Model: Building a House
+
+You don’t do this 👇
+
+“Give me a house with 3 rooms, 2 bathrooms, blue paint, balcony…”
+
+Instead you do:
+	1.	Lay foundation
+	2.	Build rooms
+	3.	Add balcony (optional)
+	4.	Paint (optional)
+	5.	Finally → BUILD
+
+👉 Same with Builder:
+Set fields → step by step → build()
+
+🧩 One-line memory trick (interview gold)
+“If constructors start confusing me → I use Builder.”
+
+📌 Real-world examples
+	•	Lombok: @Builder
+	•	StringBuilder
+	•	HTTP Request builders
+	•	Spring UriComponentsBuilder
+
+
+💡 Interview-ready summary (say this confidently)
+
+“Builder Pattern is a creational pattern used to construct complex objects step by step.
+ It helps avoid telescoping constructors, improves readability, and supports immutability.
+ I use it when objects have many optional fields.”
